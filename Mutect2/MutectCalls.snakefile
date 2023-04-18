@@ -36,8 +36,7 @@ rule Mutect2:
      log:
         "logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
      shell:
-        "
-	all_tumor_inputs=`for tumor in \`cat /home/mi724/Tools/Snakemake/Mutect2/bam.list\`; do printf -- "-input ${tumor}"; done`
+	"all_tumor_inputs=`for tumor in \`cat /home/mi724/Tools/Snakemake/Mutect2/bam.list\`; do printf -- "-input ${tumor}"; done`
 	
 	all_normal_inputs=`for normal in \`cat /home/mi724/Tools/Snakemake/Mutect2/normals.list\` ; do printf -- "-input ${normal}"; done`
 	
@@ -61,8 +60,7 @@ rule MergeMutectStats:
      log:
         "logs/MergeMutectStats/{tumors}_merge_mutect_stats.txt"
      shell:
-        "
-	all_stat_inputs=`for chromosome in {chromosomes}; do
+        "all_stat_inputs=`for chromosome in {chromosomes}; do
         printf -- "-stats results/{tumors}/unfiltered_${chromosome}.vcf.gz.stats "; done`
 
 	({params.gatk} MergeMutectStats \
