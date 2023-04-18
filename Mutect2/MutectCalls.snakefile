@@ -20,8 +20,8 @@ rule all:
 
 rule Mutect2:
 	input:
-		tumor_file = "bam.list",
-		normal_file = "normals.list"
+		tumor_file = config["samples"],
+		normal_file = config["normals"]
 	output:
 		vcf = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
 		tbi = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz.tbi",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
