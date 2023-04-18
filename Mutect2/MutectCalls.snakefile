@@ -36,11 +36,18 @@ rule Mutect2:
      log:
         "logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
      shell:
-        "({params.gatk} Mutect2 \
+        "
+	all_tumor_inputs=`for tumor in `cat /home/mi724/Tools/Snakemake/Mutect2/bam.list`; do
+        printf -- "-input ${tumor}"; done`
+	
+	all_normal_inputs=`for normal in `cat /home/mi724/Tools/Snakemake/Mutect2/normals.list` ; do
+        printf -- "-input ${normal}"; done`
+	
+	({params.gatk} Mutect2 \
         -reference {params.reference_genome} \
-        -input {input.tumor_filepath} \
-        -input {input.normal_filepath} \
-        -normal {params.normals} \
+        $all_tumor_inputs \
+	$all_normal_inputs \
+        -normal B_TRCC_18_Normal \
         -intervals {wildcards.chromosomes} \
         --germline-resource {params.mutect2_germline_resource} \
         --f1r2-tar-gz {output.tar} \
