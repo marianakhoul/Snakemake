@@ -29,7 +29,7 @@ rule Mutect2:
 		stats = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.stats")
 	params:
 		reference_genome = config["reference_genome"],
-		mutect2_germline_resource = config["mutect2_germline_resource"],
+		mutect2_germline_resource = config["germline_resource"],
 		gatk = config["gatk"],
 		panel_of_normals = config["panel_of_normals"]
 		#normals = lambda wildcards: config["samples"][wildcards.tumors][1]
