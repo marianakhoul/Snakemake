@@ -42,7 +42,6 @@ rule Mutect2:
 		-reference {params.reference_genome} \
 		"-I `cat bam.list`" \
 		"-I `cat normals.list`" \
-		{input.all_normal_inputs} \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
