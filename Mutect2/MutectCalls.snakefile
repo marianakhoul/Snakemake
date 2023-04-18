@@ -38,15 +38,16 @@ rule Mutect2:
 		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes = config["chromosomes"])
 	shell:
 		"""
-		all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input $tumor\\"; done`
-		all_normal_inputs=`for normal in `cat {input.normal}` ; do printf -- "-input $normal\\"; done`
+		#all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input $tumor\\"; done`
+		all_tumor_inputs="-I `cat {input.bams}`"
+		#all_normal_inputs=`for normal in `cat {input.normal}` ; do printf -- "-input $normal\\"; done`
+		all_normal_inputs="-I `cat {input.normal}`"
 		echo $all_tumor_inputs
 		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		#{{$all_tumor_inputs}} \
-		#{{$all_normal_inputs}} \
-		-I `for tumor in `cat {input.bams}`; do printf -- "-input $tumor\\"; done` \
+		$all_tumor_inputs \
+		$all_normal_inputs \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
