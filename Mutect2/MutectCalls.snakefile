@@ -36,7 +36,7 @@ rule Mutect2:
 	log:
 		"logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
 	shell:
-		"
+		"""
 		all_tumor_inputs=`-I `cat /home/mi724/Tools/Snakemake/Mutect2/bam.list``
 		#`for tumor in `cat {input.tumor_filepath}`; do printf -- "-input ${tumor}"; done`
 		all_normal_inputs=`for normal in `cat {input.normal_filepath}` ; do printf -- "-input ${normal}"; done`
@@ -50,7 +50,7 @@ rule Mutect2:
 		--germline-resource {params.mutect2_germline_resource} \
 		--f1r2-tar-gz {output.tar} \
 		--panel-of-normals {params.panel_of_normals} \
-		-output {output.vcf}) 2> {log}"
+		-output {output.vcf}) 2> {log}"""
      
 
 rule MergeMutectStats:
