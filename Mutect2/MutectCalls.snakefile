@@ -37,9 +37,8 @@ rule Mutect2:
 		"logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
 	shell:
 		"""
-		all_tumor_inputs=`-I `cat /home/mi724/Tools/Snakemake/Mutect2/bam.list``
-		#`for tumor in `cat {input.tumor_filepath}`; do printf -- "-input ${tumor}"; done`
-		all_normal_inputs=`for normal in `cat {input.normal_filepath}` ; do printf -- "-input ${normal}"; done`
+		all_tumor_inputs=`for tumor in `cat {input.tumor_filepath}`; do printf -- "-input ${tumor}\\"; done`
+		all_normal_inputs=`for normal in `cat {input.normal_filepath}` ; do printf -- "-input ${normal}\\"; done`
 
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
