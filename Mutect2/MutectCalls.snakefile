@@ -54,14 +54,14 @@ rule Mutect2:
 
 rule MergeMutectStats:
      output:
-        protected("results/{tumors}/mutect_merged.stats")
+        protected("results/{base_file_name}/mutect_merged.stats")
      params:
         gatk = config["gatk_path"]
      log:
-        "logs/MergeMutectStats/{tumors}_merge_mutect_stats.txt"
+        "logs/MergeMutectStats/{base_file_name}_merge_mutect_stats.txt"
      shell:
         """all_stat_inputs=`for chromosome in {chromosomes}; do
-        printf -- "-stats results/{tumors}/unfiltered_${chromosome}.vcf.gz.stats "; done`
+        printf -- "-stats results/{base_file_name}/unfiltered_${chromosome}.vcf.gz.stats "; done`
 
 	({params.gatk} MergeMutectStats \
         $all_stat_inputs \
@@ -70,15 +70,15 @@ rule MergeMutectStats:
 
 rule LearnReadOrientationModel:
       output:
-        protected("results/{tumors}/read_orientation_model.tar.gz")
+        protected("results/{base_file_name}/read_orientation_model.tar.gz")
       params:
         gatk = config["gatk_path"]
       log:
-        "logs/LearnReadOrientationModel/{tumors}_learn_read_orientation_model.txt"
+        "logs/LearnReadOrientationModel/{base_file_name}_learn_read_orientation_model.txt"
       shell:
         """
 	all_f1r2_inputs=`for chromosome in {chromosomes}; do
-        printf -- "-I results/{tumors}/unfiltered_${chromosome}_f1r2.tar.gz "; done`
+        printf -- "-I results/{base_file_name}/unfiltered_${chromosome}_f1r2.tar.gz "; done`
 	
 	({params.gatk} LearnReadOrientationModel \
 	$all_f1r2_inputs \
@@ -87,16 +87,16 @@ rule LearnReadOrientationModel:
 
 rule GatherVcfs:
       output:
-        protected("results/{tumors}/gathered_unfiltered.vcf.gz")
+        protected("results/{base_file_name}/gathered_unfiltered.vcf.gz")
       params:
         java = config["java"],
         picard_jar = config["picard_jar"]
       log:
-        protected("logs/gather_mutect_calls/{tumors}_gather_mutect_calls.txt")
+        protected("logs/gather_mutect_calls/{base_file_name}_gather_mutect_calls.txt")
       shell:
         """
 	all_vcf_inputs=`for chromosome in {chromosomes}; do
-        printf -- "-I results/{tumors}/unfiltered_${chromosome}.vcf.gz "; done`
+        printf -- "-I results/{base_file_name}/unfiltered_${chromosome}.vcf.gz "; done`
 	
 	({params.java} -jar {params.picard_jar} GatherVcfs \
 	$all_vcf_inputs \
