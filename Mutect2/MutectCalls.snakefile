@@ -19,6 +19,9 @@ rule all:
         #expand("results/{base_file_name}/{base_file_name}_f1r2_filtered_somatic_vcf.gz", base_file_name = config["base_file_name"])
 
 rule Mutect2:
+	input:
+		all_tumor_inputs="-I `cat bam.list`",
+		all_normal_inputs="-I `cat normals.list`"
 	output:
 		vcf = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
 		tbi = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz.tbi",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
@@ -40,8 +43,8 @@ rule Mutect2:
 		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		echo $all_tumor_inputs \
-		echo $all_normal_inputs \
+		{input.all_tumor_inputs} \
+		{input.all_normal_inputs} \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
