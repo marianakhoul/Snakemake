@@ -30,7 +30,7 @@ rule Mutect2:
 	params:
 		reference_genome = config["reference_genome"],
 		mutect2_germline_resource = config["germline_resource"],
-		gatk = config["gatk"],
+		gatk = config["gatk_path"],
 		panel_of_normals = config["panel_of_normals"]
 		#normals = lambda wildcards: config["samples"][wildcards.tumors][1]
 	log:
