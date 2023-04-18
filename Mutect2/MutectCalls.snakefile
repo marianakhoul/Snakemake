@@ -41,7 +41,7 @@ rule Mutect2:
 		({params.gatk} Mutect2 \
 		--reference {params.reference_genome} \
 		--input {input.tumor_file} \
-		--normal B_TRCC_18_Normal \
+		-normal B_TRCC_18_Normal \
 		--intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
 		--f1r2-tar-gz {output.tar} \
