@@ -45,7 +45,7 @@ rule Mutect2:
 		$all_tumor_inputs \
 		$all_normal_inputs \
 		-normal B_TRCC_18_Normal \
-		-intervals {wildcards.chromosomes} \
+		-intervals {{chromosomes}} \
 		--germline-resource {params.mutect2_germline_resource} \
 		--f1r2-tar-gz {output.tar} \
 		--panel-of-normals {params.panel_of_normals} \
