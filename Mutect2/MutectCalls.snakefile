@@ -19,37 +19,37 @@ rule all:
         #expand("results/{base_file_name}/{base_file_name}_f1r2_filtered_somatic_vcf.gz", base_file_name = config["base_file_name"])
 
 rule Mutect2:
-     #input:
-	#tumor = "bam.list",
-	#normal = "normals.list"
-     output:
-        vcf = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz"),
-        tbi = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.tbi"),
-        tar = protected("results/{tumors}/unfiltered_{chromosomes}_f1r2.tar.gz"),
-        stats = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.stats")
-     params:
-        reference_genome = config["reference_genome"],
-        mutect2_germline_resource = config["mutect2_germline_resource"],
-        gatk = config["gatk"],
-        panel_of_normals = config["panel_of_normals"]
-        #normals = lambda wildcards: config["samples"][wildcards.tumors][1]
-     log:
-        "logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
-     shell:
-	"all_tumor_inputs=`-I `cat /home/mi724/Tools/Snakemake/Mutect2/bam.list``
-	#`for tumor in `cat {input.tumor_filepath}`; do printf -- "-input ${tumor}"; done`
-	all_normal_inputs=`for normal in `cat {input.normal_filepath}` ; do printf -- "-input ${normal}"; done`
-	
-	({params.gatk} Mutect2 \
-	 -reference {params.reference_genome} \
-	 $all_tumor_inputs \
-	 $all_normal_inputs \
-	 -normal B_TRCC_18_Normal \
-	 -intervals {wildcards.chromosomes} \
-	 --germline-resource {params.mutect2_germline_resource} \
-	 --f1r2-tar-gz {output.tar} \
-	 --panel-of-normals {params.panel_of_normals} \
-	 -output {output.vcf}) 2> {log}"
+#input:
+#tumor = "bam.list",
+#normal = "normals.list"
+	output:
+		vcf = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz"),
+		tbi = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.tbi"),
+		tar = protected("results/{tumors}/unfiltered_{chromosomes}_f1r2.tar.gz"),
+		stats = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.stats")
+	params:
+		reference_genome = config["reference_genome"],
+		mutect2_germline_resource = config["mutect2_germline_resource"],
+		gatk = config["gatk"],
+		panel_of_normals = config["panel_of_normals"]
+		#normals = lambda wildcards: config["samples"][wildcards.tumors][1]
+	log:
+		"logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
+	shell:
+		"all_tumor_inputs=`-I `cat /home/mi724/Tools/Snakemake/Mutect2/bam.list``
+		#`for tumor in `cat {input.tumor_filepath}`; do printf -- "-input ${tumor}"; done`
+		all_normal_inputs=`for normal in `cat {input.normal_filepath}` ; do printf -- "-input ${normal}"; done`
+
+		({params.gatk} Mutect2 \
+		-reference {params.reference_genome} \
+		$all_tumor_inputs \
+		$all_normal_inputs \
+		-normal B_TRCC_18_Normal \
+		-intervals {wildcards.chromosomes} \
+		--germline-resource {params.mutect2_germline_resource} \
+		--f1r2-tar-gz {output.tar} \
+		--panel-of-normals {params.panel_of_normals} \
+		-output {output.vcf}) 2> {log}"
      
 
 rule MergeMutectStats:
