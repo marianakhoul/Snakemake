@@ -61,7 +61,7 @@ rule MergeMutectStats:
         "logs/MergeMutectStats/{base_file_name}_merge_mutect_stats.txt"
      shell:
         """all_stat_inputs=`for chromosome in {{chromosomes}}; do
-        printf -- "-stats results/{{base_file_name}}/unfiltered_${chromosome}.vcf.gz.stats "; done`
+        printf -- "-stats results/{{base_file_name}}/unfiltered_${{chromosome}}.vcf.gz.stats "; done`
 
 	({params.gatk} MergeMutectStats \
         $all_stat_inputs \
@@ -78,7 +78,7 @@ rule LearnReadOrientationModel:
       shell:
         """
 	all_f1r2_inputs=`for chromosome in {{chromosomes}}; do
-        printf -- "-I results/{{base_file_name}}/unfiltered_${chromosome}_f1r2.tar.gz "; done`
+        printf -- "-I results/{{base_file_name}}/unfiltered_${{chromosome}}_f1r2.tar.gz "; done`
 	
 	({params.gatk} LearnReadOrientationModel \
 	$all_f1r2_inputs \
@@ -96,7 +96,7 @@ rule GatherVcfs:
       shell:
         """
 	all_vcf_inputs=`for chromosome in {{chromosomes}}; do
-        printf -- "-I results/{{base_file_name}}/unfiltered_${chromosome}.vcf.gz "; done`
+        printf -- "-I results/{{base_file_name}}/unfiltered_${{chromosome}}.vcf.gz "; done`
 	
 	({params.java} -jar {params.picard_jar} GatherVcfs \
 	$all_vcf_inputs \
