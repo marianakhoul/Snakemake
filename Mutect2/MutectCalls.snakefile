@@ -122,19 +122,19 @@ rule GatherVcfs:
 #          -O {output.table}) 2> {log}"
 
 
-rule IndexFeatureFile:
-      input:
-      	  vcf = expand("results/{base_file_name}/gathered_unfiltered.vcf.gz",base_file_name=config["base_file_name"])
-      output:
-      	  vcf = protected("results/{tumor}/gathered_unfiltered.vcf.gz.tbi")
-      params:
-        gatk = config["gatk_path"]
-      log:
-        "logs/IndexFeatureFile/{tumors}.log"
-      shell:
-        "({params.gatk} IndexFeatureFile \
-	-I {input.vcf} \
-	-O {output.vcf}) 2> {log}"
+#rule IndexFeatureFile:
+#      input:
+#      	  vcf = expand("results/{base_file_name}/gathered_unfiltered.vcf.gz",base_file_name=config["base_file_name"])
+#      output:
+#      	  vcf = protected("results/{tumor}/gathered_unfiltered.vcf.gz.tbi")
+#      params:
+#        gatk = config["gatk_path"]
+#      log:
+#        "logs/IndexFeatureFile/{tumors}.log"
+#      shell:
+#        "({params.gatk} IndexFeatureFile \
+#	-I {input.vcf} \
+#	-O {output.vcf}) 2> {log}"
 
 
 #rule FilterMutectCalls:
