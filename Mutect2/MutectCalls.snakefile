@@ -20,8 +20,8 @@ rule all:
 
 rule Mutect2:
      input:
-	tumor_filepath = "bam.list",
-	normal_filepath = "normals.list"
+	tumor = "bam.list",
+	normal = "normals.list"
      output:
         vcf = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz"),
         tbi = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.tbi"),
@@ -37,7 +37,7 @@ rule Mutect2:
         "logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
      shell:
 	" 
-	all_tumor_inputs=`-I `cat {input.tumor_filepath}``
+	all_tumor_inputs=`-I `cat {input.tumor}``
 	#`for tumor in `cat {input.tumor_filepath}`; do printf -- "-input ${tumor}"; done`
 	
 	all_normal_inputs=`for normal in `cat {input.normal_filepath}` ; do printf -- "-input ${normal}"; done`
