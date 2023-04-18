@@ -43,8 +43,8 @@ rule Mutect2:
 
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		${all_tumor_inputs} \
-		${all_normal_inputs} \
+		{{$all_tumor_inputs}} \
+		{{$all_normal_inputs}} \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
