@@ -40,7 +40,7 @@ rule Mutect2:
 		"""
 		all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input {{$tumor}}\\"; done`
 		all_normal_inputs=`for normal in `cat {input.normal}` ; do printf -- "-input {{$normal}}\\"; done`
-		{{print $all_tumor_inputs}}
+		{{echo $all_tumor_inputs}}
 		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
