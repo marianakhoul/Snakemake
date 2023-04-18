@@ -31,8 +31,8 @@ rule Mutect2:
         reference_genome = config["reference_genome"],
         mutect2_germline_resource = config["mutect2_germline_resource"],
         gatk = config["gatk"],
-        panel_of_normals = config["panel_of_normals"],
-        normals = lambda wildcards: config["samples"][wildcards.tumors][1]
+        panel_of_normals = config["panel_of_normals"]
+        #normals = lambda wildcards: config["samples"][wildcards.tumors][1]
      log:
         "logs/mutect2/{tumors}_{chromosomes}_mutect2.txt"
      shell:
