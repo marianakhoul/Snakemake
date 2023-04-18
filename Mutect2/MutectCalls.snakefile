@@ -40,8 +40,8 @@ rule Mutect2:
 		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		-I ${{sep=' -I ' bam.list}} \
-		-I ${{sep=' -I ' normals.list}} \
+		echo $all_tumor_inputs \
+		echo $all_normal_inputs \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
