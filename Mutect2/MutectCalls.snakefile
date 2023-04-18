@@ -38,13 +38,13 @@ rule Mutect2:
 		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes = config["chromosomes"])
 	shell:
 		"""
-		#all_tumor_inputs="-I `cat bam.list`"
-		#all_normal_inputs="-I `cat normals.list`"
+		all_tumor_inputs=`cat {input.tumor_file}`
+		all_normal_inputs="-I `cat {input.normal_file}`"
 		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		-I {input.tumor_file} \
-		-I {input.normal_file} \
+		$all_tumor_inputs \
+		$all_normal_inputs \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
