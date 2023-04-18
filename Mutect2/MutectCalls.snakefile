@@ -61,12 +61,12 @@ rule MergeMutectStats:
      log:
         "logs/MergeMutectStats/{tumors}_merge_mutect_stats.txt"
      shell:
-        "all_stat_inputs=`for chromosome in {chromosomes}; do
+        """all_stat_inputs=`for chromosome in {chromosomes}; do
         printf -- "-stats results/{tumors}/unfiltered_${chromosome}.vcf.gz.stats "; done`
 
 	({params.gatk} MergeMutectStats \
         $all_stat_inputs \
-        -O {output}) 2> {log}"
+        -O {output}) 2> {log}"""
 
 
 rule LearnReadOrientationModel:
@@ -77,13 +77,13 @@ rule LearnReadOrientationModel:
       log:
         "logs/LearnReadOrientationModel/{tumors}_learn_read_orientation_model.txt"
       shell:
-        "
+        """
 	all_f1r2_inputs=`for chromosome in {chromosomes}; do
         printf -- "-I results/{tumors}/unfiltered_${chromosome}_f1r2.tar.gz "; done`
 	
 	({params.gatk} LearnReadOrientationModel \
 	$all_f1r2_inputs \
-	-O {output}) 2> {log}"
+	-O {output}) 2> {log}"""
 
 
 rule GatherVcfs:
@@ -95,13 +95,13 @@ rule GatherVcfs:
       log:
         protected("logs/gather_mutect_calls/{tumors}_gather_mutect_calls.txt")
       shell:
-        "
+        """
 	all_vcf_inputs=`for chromosome in {chromosomes}; do
         printf -- "-I results/{tumors}/unfiltered_${chromosome}.vcf.gz "; done`
 	
 	({params.java} -jar {params.picard_jar} GatherVcfs \
 	$all_vcf_inputs \
-        O={output}) 2> {log}"
+        O={output}) 2> {log}"""
 
 
 #rule CalculateContamination:
@@ -135,7 +135,7 @@ rule IndexFeatureFile:
       shell:
         "({params.gatk} IndexFeatureFile \
 	-I {input.vcf} \
-	-O {output.vcf}) 2> {log"
+	-O {output.vcf}) 2> {log}"
 
 
 #rule FilterMutectCalls:
