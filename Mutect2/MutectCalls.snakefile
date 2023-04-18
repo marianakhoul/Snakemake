@@ -19,9 +19,6 @@ rule all:
         #expand("results/{base_file_name}/{base_file_name}_f1r2_filtered_somatic_vcf.gz", base_file_name = config["base_file_name"])
 
 rule Mutect2:
-	input:
-		bams = "bam.list",
-		normal = "normals.list"
 	output:
 		vcf = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
 		tbi = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz.tbi",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
@@ -38,11 +35,8 @@ rule Mutect2:
 		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes = config["chromosomes"])
 	shell:
 		"""
-		#all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input $tumor\\"; done`
-		all_tumor_inputs="-I `cat {input.bams}`"
-		#all_normal_inputs=`for normal in `cat {input.normal}` ; do printf -- "-input $normal\\"; done`
-		all_normal_inputs="-I `cat {input.normal}`"
-		echo $all_tumor_inputs
+		all_tumor_inputs="-I `cat bam.list`"
+		all_normal_inputs="-I `cat normals.list`"
 		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
