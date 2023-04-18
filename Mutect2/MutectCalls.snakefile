@@ -23,10 +23,10 @@ rule Mutect2:
 		bams = "bam.list",
 		normal = "normals.list"
 	output:
-		vcf = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz"),
-		tbi = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.tbi"),
-		tar = protected("results/{tumors}/unfiltered_{chromosomes}_f1r2.tar.gz"),
-		stats = protected("results/{tumors}/unfiltered_{chromosomes}.vcf.gz.stats")
+		vcf = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
+		tbi = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz.tbi",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
+		tar = expand("results/{base_file_name}/unfiltered_{chromosomes}_f1r2.tar.gz",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
+		stats = expand("results/{base_file_name}/unfiltered_{chromosomes}.vcf.gz.stats",base_file_name=config["base_file_name"],chromosomes=config["chromosomes"]),
 	params:
 		reference_genome = config["reference_genome"],
 		mutect2_germline_resource = config["germline_resource"],
