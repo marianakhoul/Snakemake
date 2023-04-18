@@ -130,7 +130,7 @@ rule IndexFeatureFile:
       input:
       	  vcf = expand("results/{base_file_name}/gathered_unfiltered.vcf.gz",base_file_name=config["base_file_name"])
       output:
-      	  vcf = protected(("results/{tumor}/gathered_unfiltered.vcf.gz.tbi")
+      	  vcf = protected("results/{tumor}/gathered_unfiltered.vcf.gz.tbi")
       params:
         gatk = config["gatk_path"]
       log:
