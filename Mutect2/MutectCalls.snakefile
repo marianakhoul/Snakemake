@@ -38,9 +38,6 @@ rule Mutect2:
 		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes = config["chromosomes"])
 	shell:
 		"""
-		all_tumor_inputs=`cat {input.tumor_file}`
-		all_normal_inputs="-I `cat {input.normal_file}`"
-		
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
 		-I bam.list \
