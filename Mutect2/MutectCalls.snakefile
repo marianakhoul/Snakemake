@@ -37,8 +37,8 @@ rule Mutect2:
 		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes=config["chromosomes"])
 	shell:
 		"""
-		all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input ${tumor}\\"; done`
-		all_normal_inputs=`for normal in `cat {input.normal}` ; do printf -- "-input ${normal}\\"; done`
+		all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input ${{tumor}}\\"; done`
+		all_normal_inputs=`for normal in `cat {input.normal}` ; do printf -- "-input ${{normal}}\\"; done`
 
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
