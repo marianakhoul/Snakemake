@@ -40,7 +40,23 @@ rule Mutect2:
 		"""
 		({params.gatk} Mutect2 \
 		-R {params.reference_genome} \
-		-I bam.list \
+		-I /mnt/scratch/BTRCC_18_Aug2021/B_TRCC_18_Tumor/v1/B_TRCC_18_Tumor.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LeftMedLNTum_1/v1/LeftMedLNTum_1.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_1/v1/LiverTum_1.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_2/v1/LiverTum_2.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_3/v1/LiverTum_3.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_4/v1/LiverTum_4.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_5/v1/LiverTum_5.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_6/v1/LiverTum_6.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LungPlTum_1/v1/LungPlTum_1.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LungPlTum_2/v1/LungPlTum_2.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LungPlTum_3/v1/LungPlTum_3.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/RPLNTum_1/v1/RPLNTum_1.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/RPLNTum_2/v1/RPLNTum_2.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/RPLNTum_3/v1/RPLNTum_3.cram \
+		-I /mnt/scratch/BTRCC_18_Aug2021/B_TRCC_18_Normal/v1/B_TRCC_18_Normal.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/LiverNormal/v1/LiverNormal.cram \
+		-I /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/KidneyNormal/v1/KidneyNormal.cram \
 		-normal B_TRCC_18_Normal \
 		-L {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
