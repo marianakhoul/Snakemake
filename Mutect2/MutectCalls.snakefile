@@ -34,7 +34,7 @@ rule Mutect2:
 		panel_of_normals = config["panel_of_normals"]
 		#normals = lambda wildcards: config["samples"][wildcards.tumors][1]
 	log:
-		"logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt"
+		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes=config["chromosomes"])
 	shell:
 		"""
 		all_tumor_inputs=`for tumor in `cat {input.bams}`; do printf -- "-input ${tumor}\\"; done`
