@@ -31,7 +31,8 @@ rule Mutect2:
 		reference_genome = config["reference_genome"],
 		mutect2_germline_resource = config["germline_resource"],
 		gatk = config["gatk_path"],
-		panel_of_normals = config["panel_of_normals"]
+		panel_of_normals = config["panel_of_normals"],
+		chromosomes = config["chromosomes"]
 		#normals = lambda wildcards: config["samples"][wildcards.tumors][1]
 	log:
 		expand("logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt", base_file_name = config["base_file_name"],chromosomes = config["chromosomes"])
@@ -42,10 +43,10 @@ rule Mutect2:
 
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		$all_tumor_inputs \
-		$all_normal_inputs \
+		${all_tumor_inputs} \
+		${all_normal_inputs} \
 		-normal B_TRCC_18_Normal \
-		-intervals {{chromosomes}} \
+		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
 		--f1r2-tar-gz {output.tar} \
 		--panel-of-normals {params.panel_of_normals} \
