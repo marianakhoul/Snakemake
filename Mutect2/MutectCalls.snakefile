@@ -40,7 +40,7 @@ rule Mutect2:
 		"""
 		({params.gatk} Mutect2 \
 		-reference {params.reference_genome} \
-		-I bam.list \
+		-I {input.tumor_file} \
 		-normal B_TRCC_18_Normal \
 		-intervals {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
