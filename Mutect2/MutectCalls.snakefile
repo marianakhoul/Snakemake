@@ -39,12 +39,12 @@ rule Mutect2:
 	shell:
 		"""
 		({params.gatk} Mutect2 \
-		--reference {params.reference_genome} \
-		--input {input.tumor_file} \
+		-R {params.reference_genome} \
+		-I bam.list \
 		-normal B_TRCC_18_Normal \
-		--intervals {params.chromosomes} \
+		-L {params.chromosomes} \
 		--germline-resource {params.mutect2_germline_resource} \
 		--f1r2-tar-gz {output.tar} \
 		--panel-of-normals {params.panel_of_normals} \
-		--output {output.vcf}) 2> {log}"""
+		-O {output.vcf}) 2> {log}"""
      
