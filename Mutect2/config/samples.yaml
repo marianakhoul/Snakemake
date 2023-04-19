@@ -1,3 +1,4 @@
+base_file_name: B_TRCC_18
 
 samples: [ /mnt/scratch/BTRCC_18_Aug2021/B_TRCC_18_Tumor/v1/B_TRCC_18_Tumor.cram ,
             /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LeftMedLNTum_1/v1/LeftMedLNTum_1.cram ,
@@ -17,4 +18,4 @@ samples: [ /mnt/scratch/BTRCC_18_Aug2021/B_TRCC_18_Tumor/v1/B_TRCC_18_Tumor.cram
             /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/LiverNormal/v1/LiverNormal.cram ,
             /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/KidneyNormal/v1/KidneyNormal.cram ]
 
-normals: [ B_TRCC_18_Normal , LiverNormal , KidneyNormal ]
+normals: [B_TRCC_18_Normal]
