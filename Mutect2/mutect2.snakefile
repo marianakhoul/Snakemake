@@ -22,15 +22,16 @@ rule mutect2:
         germline_resource = config["germline_resource"],
         gatk = config["gatk_path"],
         panel_of_normals = config["panel_of_normals"],
-        normals = lambda wildcards: config["normals"][wildcards.tumors]
+        chrom = config["chromosomes"]
+        #normals = lambda wildcards: config["normals"][wildcards.tumors]
     log:
         "logs/mutect2/{base_file_name}_{chromosomes}_mutect2.txt"
     shell:
         "({params.gatk} Mutect2 \
         -reference {params.reference_genome} \
         -input {input.tumor_filepath} \
-        -normal {params.normals} \
-        -intervals {wildcards.chromosomes} \
+        -normal B_TRCC_18_Normal \
+        -intervals {params.chrom} \
         --germline-resource {params.mutect2_germline_resource} \
         --f1r2-tar-gz {output.tar} \
         --panel-of-normals {params.panel_of_normals} \
