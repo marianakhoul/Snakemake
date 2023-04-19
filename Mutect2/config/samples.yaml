@@ -2,23 +2,6 @@
 
 base_file_name: B_TRCC_18
 
-samples: 
-     B_TRCC_18_Tumor.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18/B_TRCC_18_Tumor.bam
-     LeftMedLNTum_1.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LeftMedLNTum_1.bam
-     LiverTum_1.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_1.bam
-     LiverTum_2.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_2.bam
-     LiverTum_3.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_3.bam
-     LiverTum_4.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_4.bam
-     LiverTum_5.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_5.bam
-     LiverTum_6.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_6.bam
-     LungPlTum_1.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LungPlTum_1.bam
-     LungPlTum_2.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LungPlTum_2.bam
-     LungPlTum_3.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LungPlTum_3.bam
-     RPLNTum_1.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/RPLNTum_1.bam
-     RPLNTum_2.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/RPLNTum_2.bam
-     RPLNTum_3.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/RPLNTum_3.bam
-     LiverNormal.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/normal/LiverNormal.bam
-     KidneyNormal.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/normal/KidneyNormal.bam
-     B_TRCC_18_Normal.bam: /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18/B_TRCC_18_Normal.bam
+samples: /home/mi724/Tools/Snakemake/Mutect2/bam.list
 
 normals: [B_TRCC_18_Normal]
