@@ -1,21 +1,21 @@
 base_file_name: B_TRCC_18
 
-samples: [ /mnt/scratch/BTRCC_18_Aug2021/B_TRCC_18_Tumor/v1/B_TRCC_18_Tumor.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LeftMedLNTum_1/v1/LeftMedLNTum_1.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_1/v1/LiverTum_1.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_2/v1/LiverTum_2.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_3/v1/LiverTum_3.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_4/v1/LiverTum_4.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_5/v1/LiverTum_5.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LiverTum_6/v1/LiverTum_6.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LungPlTum_1/v1/LungPlTum_1.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LungPlTum_2/v1/LungPlTum_2.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/LungPlTum_3/v1/LungPlTum_3.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/RPLNTum_1/v1/RPLNTum_1.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/RPLNTum_2/v1/RPLNTum_2.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/WGS/RPLNTum_3/v1/RPLNTum_3.cram ,
-            /mnt/scratch/BTRCC_18_Aug2021/B_TRCC_18_Normal/v1/B_TRCC_18_Normal.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/LiverNormal/v1/LiverNormal.cram ,
-            /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/KidneyNormal/v1/KidneyNormal.cram ]
+samples: [ /mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18/B_TRCC_18_Tumor.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LeftMedLNTum_1.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_1.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_2.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_3.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_4.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_5.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LiverTum_6.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LungPlTum_1.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LungPlTum_2.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/LungPlTum_3.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/RPLNTum_1.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/RPLNTum_2.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/tumor/RPLNTum_3.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/normal/LiverNormal.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18_Feb2022/normal/KidneyNormal.bam,
+/mnt/storage/labs/sviswanathan/tRCC_data/BTRCC_18/B_TRCC_18_Normal.bam ]
 
 normals: [B_TRCC_18_Normal]
